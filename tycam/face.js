@@ -20,6 +20,11 @@
           color: 'red',
           radius: 5,
         });
+
+        detection.landmarks.forEach((landmark, index) => {
+          console.log(`Landmark ${index}: x=${landmark.x}, y=${landmark.y}`);
+        });
+        
       }
       canvasCtx1.restore();
     }
