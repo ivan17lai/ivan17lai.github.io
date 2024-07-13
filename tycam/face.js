@@ -4,6 +4,9 @@ const canvasCtx1 = out1.getContext('2d');
 const captureBtn = document.getElementById('captureBtn');
 const capturedImageContainer = document.getElementById('capturedImageContainer');
 
+const shoted_bar = document.getElementsByClassName('shoted-bar');
+const shot_bar = document.getElementsByClassName('shot-bar');
+
 let boxCoordinates = null;
 
 // const spinner = document.querySelector('.loading');
@@ -65,6 +68,7 @@ function onResultsFace(results) {
 }
 
 captureBtn.addEventListener('click', () => {
+
   if (boxCoordinates) {
     const {startX, startY, boxWidth, boxHeight} = boxCoordinates;
     const tempCanvas = document.createElement('canvas');
@@ -76,16 +80,47 @@ captureBtn.addEventListener('click', () => {
     tempCtx.drawImage(out1, startX, startY, boxWidth, boxHeight, 0, 0, boxWidth, boxHeight);
     const dataURL = tempCanvas.toDataURL('image/png');
     
+    capturedImageContainer.innerHTML = ''; // 清空容器內的舊圖像
     const capturedImage = document.createElement('img');
     capturedImage.src = dataURL;
-    document.getElementById('capturedImageContainer').appendChild(capturedImage);
+    capturedImageContainer.appendChild(capturedImage);
+
     capturedImageContainer.style.display = 'block';
     out1.style.display = 'none';
+
+    shot_bar[0].style.display = 'none';
+    shoted_bar[0].style.display = 'block';
 
   } else {
     console.log('No face detected to capture.');
   }
 });
+
+
+reshot.addEventListener('click', () => {
+
+  capturedImageContainer.style.display = 'none';
+  out1.style.display = 'block';
+
+  shot_bar[0].style.display = 'block';
+  shoted_bar[0].style.display = 'none';
+
+});
+
+savephoto.addEventListener('click', () => {
+  const img = capturedImageContainer.querySelector('img');
+  if (img) {
+    const a = document.createElement('a');
+    a.href = img.src;
+    a.download = 'photo.png';
+    document.body.appendChild(a); // 必須將 <a> 元素附加到文檔中，才能觸發點擊事件
+    a.click();
+    document.body.removeChild(a); // 點擊後移除 <a> 元素
+  } else {
+    console.log('No image found to download.');
+  }
+});
+
 
 const faceDetection = new FaceDetection({locateFile: (file) => {
   return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;

@@ -6,7 +6,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="face.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
   </head>
 
   <body>
@@ -26,16 +31,46 @@
         </div>
 
         <div class="column-classBar">
+          <input type="file" id="file-upload" />
+          <div id="button-class"></div>
         </div>
+        
 
 
         <div class="column-canvas">
             <div class="camera-view">
+
+              <div class="canvas-block">
                 <canvas class="output1" width="480" height="480" style="display: block;"></canvas>
                 <div id="capturedImageContainer" style="display: none;"></div>
+              </div>
+
+                <div class="shot-bar" style="margin-left: 5%;">
+                  <button id="captureBtn" class="button is-primary round-button">
+                    <span class="material-icons">
+                      photo_camera
+                    </span>
+                  </button>
+                </div>
+
+                <div class="shoted-bar" style="display: none;">
+                  <button id="reshot" class="button is-primary round-button">
+                    <span class="material-icons">
+                      refresh
+                    </span>
+                  </button>
+
+                  <button id="savephoto" class="button is-primary round-button" style="margin-top: 10%;">
+                    <span class="material-icons">
+                      save
+                    </span>
+                  </button>
+
+                </div>
+
+
 
             </div>
-            <button id="captureBtn" class="button is-primary">Capture</button>
 
         </div>
 
@@ -43,14 +78,12 @@
         </div>
 
       </div>
-
-
-
       
 
     </div>
     
     <script type="text/javascript" src="./face.js"></script>
+    <script type="text/javascript" src="./excel_read.js"></script>
     
   </body>
 </html>
