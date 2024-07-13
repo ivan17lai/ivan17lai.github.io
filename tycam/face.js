@@ -2,12 +2,14 @@ const video1 = document.getElementsByClassName('input_video1')[0];
 const out1 = document.getElementsByClassName('output1')[0];
 const canvasCtx1 = out1.getContext('2d');
 const captureBtn = document.getElementById('captureBtn');
+const capturedImageContainer = document.getElementById('capturedImageContainer');
+
 let boxCoordinates = null;
 
-const spinner = document.querySelector('.loading');
-spinner.ontransitionend = () => {
-  spinner.style.display = 'none';
-};
+// const spinner = document.querySelector('.loading');
+// spinner.ontransitionend = () => {
+//   spinner.style.display = 'none';
+// };
 
 function onResultsFace(results) {
   document.body.classList.add('loaded');
@@ -34,7 +36,7 @@ function onResultsFace(results) {
     const rightEdgeY = rightEdge.y * out1.height;
 
     // 顯示臉部邊緣位置到 displayBroad 元素
-    displayBroad.innerHTML = `Left Edge: x=${leftEdgeX.toFixed(2)}, y=${leftEdgeY.toFixed(2)}<br>Right Edge: x=${rightEdgeX.toFixed(2)}, y=${rightEdgeY.toFixed(2)}`;
+    // displayBroad.innerHTML = `Left Edge: x=${leftEdgeX.toFixed(2)}, y=${leftEdgeY.toFixed(2)}<br>Right Edge: x=${rightEdgeX.toFixed(2)}, y=${rightEdgeY.toFixed(2)}`;
 
     // 計算臉部中心點
     const centerX = (leftEdgeX + rightEdgeX) / 2;
@@ -55,7 +57,7 @@ function onResultsFace(results) {
     boxCoordinates = {startX, startY, boxWidth, boxHeight};
 
     // 繪製4:3的矩形框
-    canvasCtx1.strokeStyle = 'green';
+    canvasCtx1.strokeStyle = 'white';
     canvasCtx1.lineWidth = 4;
     canvasCtx1.strokeRect(startX, startY, boxWidth, boxHeight);
   }
@@ -77,6 +79,9 @@ captureBtn.addEventListener('click', () => {
     const capturedImage = document.createElement('img');
     capturedImage.src = dataURL;
     document.getElementById('capturedImageContainer').appendChild(capturedImage);
+    capturedImageContainer.style.display = 'block';
+    out1.style.display = 'none';
+
   } else {
     console.log('No face detected to capture.');
   }
@@ -96,3 +101,6 @@ const camera = new Camera(video1, {
   height: 480
 });
 camera.start();
+
+window.addEventListener('resize', adjustCanvasSize);
+adjustCanvasSize();
