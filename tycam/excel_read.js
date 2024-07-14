@@ -1,4 +1,7 @@
 var json;
+var nowID = '';
+
+
   document.getElementById('openfile').addEventListener('click', function() {
     document.getElementById('fileInput').click();
   });
@@ -67,6 +70,17 @@ var json;
       var button = document.createElement('button');
       button.innerHTML = `${student['學號']}-${student['學生姓名']}`;
       button.className = 'button-student';
+      button.id = student['證照號碼'];
+      button.addEventListener('click', function() {
+        showStudent(button,student);
+      });
       studentContainer.appendChild(button);
     });
+  }
+
+  function showStudent(button,student) {
+    var color = window.getComputedStyle(document.getElementById('openfile')).backgroundColor;
+    button.style.backgroundColor = color;
+    document.getElementById('student-information').innerHTML =`${student['班級']}班${student['座號']}號-${student['學生姓名']}`;
+    nowID = student['證照號碼'];
   }

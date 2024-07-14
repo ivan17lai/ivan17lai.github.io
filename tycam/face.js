@@ -112,7 +112,7 @@ savephoto.addEventListener('click', () => {
   if (img) {
     const a = document.createElement('a');
     a.href = img.src;
-    a.download = 'photo.png';
+    a.download = nowID + '.png';
     document.body.appendChild(a); // 必須將 <a> 元素附加到文檔中，才能觸發點擊事件
     a.click();
     document.body.removeChild(a); // 點擊後移除 <a> 元素
