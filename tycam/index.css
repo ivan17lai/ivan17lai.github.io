@@ -4,6 +4,7 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: #F5F5F5;
+    overflow: hidden;
 }
 
 .body {
@@ -12,6 +13,7 @@ html, body {
     align-items: center;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .container {
@@ -117,6 +119,24 @@ html, body {
     transition: background-color 0.3s; /* 平滑過渡效果 */
   }
 
+
+  .openfile-samll {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 67%;
+    margin-top: 1%;
+    padding: 0;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    background-color: #E1F5FE;
+    transition: background-color 0.3s; /* 平滑過渡效果 */
+  }
+
   .round-button .material-icons {
     font-size: 24px;
   }
@@ -126,6 +146,84 @@ html, body {
   }
 
   .button-class {
-    width: 100%;
+    width: fill-available;
+    height: 60px;
+    background-color: #FAFAFA;
+    border: none;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 10px; /* 圓角 */
+    padding: 10px;
+    font-size: 24px;
+    box-sizing: border-box; /* 包括內邊距和邊框在內的完整寬度 */
+}
+
+  .button-student {
+    width: fill-available;
+    height: 60px;
+    background-color: #FAFAFA;
+    border: none;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 10px; /* 圓角 */
+    padding: 10px;
+    font-size: 24px;
+    box-sizing: border-box; /* 包括內邊距和邊框在內的完整寬度 */
+}
+
+  .openfile-button {
+    margin: 4%;
+    width: 92%;
     height: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: 24px;
+    border: none;
+    background-color: #E1F5FE;
+    transition: background-color 0.3s; /* 平滑過渡效果 */
   }
+
+  .classbar-title {
+    margin: 6%;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: start;
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .classbuttom-Bar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll; /* 確保始終可滑動 */
+    -ms-overflow-style: none;  /* IE和Edge */
+    scrollbar-width: none;  /* Firefox */
+    max-height: 95%; /* 設置最大高度以確保不會超出邊界 */
+  }
+
+
+  .student-Bar {
+    margin: 2%;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    overflow-y: scroll; /* 確保始終可滑動 */
+    -ms-overflow-style: none;  /* IE和Edge */
+    scrollbar-width: none;  /* Firefox */
+    max-height: 95%; /* 設置最大高度以確保不會超出邊界 */
+}
+
+.student-Bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari 和 Opera */
+}

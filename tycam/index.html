@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -31,10 +31,38 @@
         </div>
 
         <div class="column-classBar">
-          <input type="file" id="file-upload" />
-          <div id="button-class"></div>
+          
+          <div class="classbar-title">
+            <div class="classbar-text">
+              班級
+            </div>
+            <button id="openfile2" class="openfile-samll" style="display: none;">
+              <span class="material-icons" style="font-size: 20px">
+                folder_open
+              </span>
+            </button>
+          </div>
+
+          <button id="openfile" class="openfile-button" style="display: block;">
+            選擇檔案 
+            <span class="material-icons">
+              folder_open
+            </span>
+          </button>
+
+          <input type="file" id="fileInput" style="display: none;">
+          
+          <div class="classbuttom-Bar" id="classbuttom-Bar"></div>
+
         </div>
         
+
+        <div class="column-information">
+          <div id="student-list"></div>
+          <div class="student-Bar" id="student-Bar"></div>
+
+
+        </div>
 
 
         <div class="column-canvas">
@@ -74,8 +102,6 @@
 
         </div>
 
-        <div class="column-information">
-        </div>
 
       </div>
       
